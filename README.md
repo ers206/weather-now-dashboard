@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+To build a weather dashboard using the OpenWeather API that will run in the browser and feature dynamically updated HTML and CSS.
 
 ## Description
 
@@ -24,6 +24,8 @@ THEN I am again presented with current and future conditions for that city
 * html
 * css
 * Javascript
+* bootstrap
+* OpenWeather API
 
 ## images
 
