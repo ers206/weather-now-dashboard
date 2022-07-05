@@ -1,4 +1,4 @@
-# weather-now-dashboard
+# Weather-now-dashboard
 
 ## Purpose
 
