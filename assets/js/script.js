@@ -3,7 +3,7 @@
 // https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key} 
 // example 
 // https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid={API key} 
-var city = "Phoenix"
+var city = "San diego"
 var weatherApiCity = "https://api.openweathermap.org/data/2.5/weather?q="+ city +"&units=imperial&appid=bb9820e3d7aab8059f144ee6dd8eca00"
 var citiesSearched = document.querySelector("#selected-cities")
 var daily1 = document.querySelector("#day1") 
@@ -17,6 +17,8 @@ var todayHumidity = document.querySelector("#humidityContainer")
 var todayFeelsLike = document.querySelector("#feelsLikeContainer")
 var currentCity = document.querySelector("#current-city")
 var cityName1 =  document.querySelector("#cityName")
+// add #selected-cities as var 
+
 fetch(weatherApiCity)
     .then (function(response) {
         if(response.ok) {
@@ -24,24 +26,23 @@ fetch(weatherApiCity)
         }
     })
     .then(function(data){
-        console.log(data.coord)
+        // console.log(data.coord) 
         var oneCallApi = "https://api.openweathermap.org/data/2.5/onecall?lat="+ data.coord.lat + "&lon=" + data.coord.lon +"&units=imperial&appid=bb9820e3d7aab8059f144ee6dd8eca00"
         fetch(oneCallApi)
             .then(response => response.json())
             .then(function (onecallData) {
                 // console.log(onecallData)
-               // handle everything to showcase from this perspective
-                //within the callback function that starts in line 27 through 33
-                // alternatively you can pass onecallData as a parameter to a diff function to make it cleaner
+                // handle everything to showcase from this perspective within the callback function line 26
+                // pass onecallData as a parameter to a diff function to make it cleaner
                 handleFrontend(city, onecallData)
             })
     })
     
 
 function handleFrontend(city, dataObj) {
-    console.log(city)
-    console.log(dataObj)
-    console.log(dataObj.current.uvi)
+    // console.log(city) 
+    // console.log(dataObj) 
+    // console.log(dataObj.current.uvi) 
     todayTemp.textContent = "temperature: " + dataObj.current.temp + "°F"
     todayWind.textContent = "wind speed: " + dataObj.current.wind_speed +"mph"
     todayHumidity.textContent = "humidity: " + dataObj.current.humidity + "%"
@@ -57,13 +58,14 @@ function handleFrontend(city, dataObj) {
     daily5.textContent = "High Temp: " + dataObj.daily[5].temp.max + "°F" + "Low Temp: " + dataObj.daily[5].temp.min + "°F" + "wind speed: "+ dataObj.daily[5].wind_speed + "mph" + "humidity: " + dataObj.daily[5].humidity + "%"
 }
     
-// weatherClick()
-// var weatherApiCity = "https://api.openweathermap.org/data/2.5/weather?q="+ city +"&units=imperial&appid=bb9820e3d7aab8059f144ee6dd8eca00"
 
 
+// need to make button functional\is submit() easier than below
 // from.submit() 
 
 
 // var button = select("#submit-btn"); 
 // button.mousePressed(weatherClick); 
 // input = select("#city") 
+// weatherClick()
+// var weatherApiCity = "https://api.openweathermap.org/data/2.5/weather?q="+ city +"&units=imperial&appid=bb9820e3d7aab8059f144ee6dd8eca00"
